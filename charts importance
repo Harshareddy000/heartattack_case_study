@@ -1,0 +1,75 @@
+Choose the Right Chart Type
+Here’s a chart guide based on the type of data you want to analyze:
+
+Goal	Chart Type	Library
+Frequency of categories	Bar chart	Seaborn, Matplotlib
+Value comparison across categories	Grouped bar chart	Seaborn
+Data distribution	Histogram, KDE plot	Seaborn
+Relationships between two variables	Scatter plot	Seaborn
+Correlation between variables	Heatmap	Seaborn
+Composition (part of whole)	Pie chart	Matplotlib
+Time series / trend over time	Line plot	Matplotlib, Seaborn
+Distribution across categories	Box plot, Violin plot	Seaborn
+Geographical data	Choropleth map, scatter geo	Plotly or GeoPandas
+
+🔧 Step 3: Sample Code Snippets
+1. Bar Chart (e.g., Top 10 countries by happiness score)
+python
+Copy
+Edit
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+top_countries = df.sort_values("Happiness Score", ascending=False).head(10)
+sns.barplot(data=top_countries, x="Happiness Score", y="Country")
+plt.title("Top 10 Happiest Countries")
+plt.show()
+2. Histogram (e.g., Distribution of GDP)
+python
+Copy
+Edit
+sns.histplot(df["GDP per capita"], bins=20, kde=True)
+plt.title("GDP per Capita Distribution")
+plt.show()
+3. Scatter Plot (e.g., GDP vs Happiness)
+python
+Copy
+Edit
+sns.scatterplot(data=df, x="GDP per capita", y="Happiness Score")
+plt.title("GDP vs Happiness Score")
+plt.show()
+4. Heatmap (e.g., Correlation matrix)
+python
+Copy
+Edit
+correlation = df.corr(numeric_only=True)
+sns.heatmap(correlation, annot=True, cmap="coolwarm")
+plt.title("Correlation Matrix")
+plt.show()
+5. Box Plot (e.g., Happiness score by region)
+python
+Copy
+Edit
+sns.boxplot(data=df, x="Region", y="Happiness Score")
+plt.xticks(rotation=90)
+plt.title("Happiness Score Distribution by Region")
+plt.show()
+6. Line Plot (e.g., Happiness score trend over years per country)
+python
+Copy
+Edit
+df_country = df[df['Country'] == 'India']
+sns.lineplot(data=df_country, x="Year", y="Happiness Score")
+plt.title("India's Happiness Score Over Time")
+plt.show()
+🛠 Tools You Can Use:
+Matplotlib – good for basic plotting
+
+Seaborn – built on Matplotlib, better aesthetics, ideal for EDA
+
+Plotly – for interactive plots (especially maps and dashboards)
+
+Pandas – for quick .plot() based charts
+
+GeoPandas or folium – for geographical maps (if working with lat/long or countries)
+
