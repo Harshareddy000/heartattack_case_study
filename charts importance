@@ -73,3 +73,140 @@ Pandas – for quick .plot() based charts
 
 GeoPandas or folium – for geographical maps (if working with lat/long or countries)
 
+
+📊 1. Bar Chart
+Use When: You want to show how often a category appears (frequency).
+
+Example: Count of movies in each genre
+
+python
+Copy
+Edit
+sns.countplot(data=df, x="Genre")
+✅ Best for categorical variables like country, region, gender.
+
+📊 2. Grouped Bar Chart
+Use When: You want to compare values across categories and subcategories.
+
+Example: Average exam score by gender and subject
+
+python
+Copy
+Edit
+sns.barplot(data=df, x="Subject", y="Score", hue="Gender")
+✅ Best for multi-category comparison.
+
+📈 3. Histogram
+Use When: You want to see how a numerical variable is distributed.
+
+Example: Distribution of GDP per capita
+
+python
+Copy
+Edit
+sns.histplot(df["GDP"], bins=20, kde=False)
+✅ Shows how values are spread across ranges.
+
+🌊 4. KDE Plot (Kernel Density Estimate)
+Use When: You want a smooth curve to show data distribution.
+
+Example: Smooth distribution of happiness scores
+
+python
+Copy
+Edit
+sns.kdeplot(df["Happiness Score"])
+✅ Gives an idea of where most values lie.
+
+🔘 5. Scatter Plot
+Use When: You want to find relationship/correlation between two continuous variables.
+
+Example: GDP vs Happiness Score
+
+python
+Copy
+Edit
+sns.scatterplot(data=df, x="GDP", y="Happiness Score")
+✅ Good for spotting trends, clusters, or outliers.
+
+🧠 6. Heatmap
+Use When: You want to show correlations or patterns in a matrix of values.
+
+Example: Correlation between multiple numeric columns
+
+python
+Copy
+Edit
+sns.heatmap(df.corr(), annot=True, cmap="coolwarm")
+✅ Ideal for finding relationships between variables quickly.
+
+🍰 7. Pie Chart
+Use When: You want to show how each part contributes to a whole (composition).
+
+Example: Percentage of students by stream
+
+python
+Copy
+Edit
+df['Stream'].value_counts().plot.pie(autopct='%1.1f%%')
+✅ Use only for simple, clear comparisons.
+
+📉 8. Line Plot
+Use When: You want to track changes over time.
+
+Example: Annual temperature changes
+
+python
+Copy
+Edit
+sns.lineplot(data=df, x="Year", y="AvgTemp")
+✅ Best for time series and trend analysis.
+
+📦 9. Box Plot
+Use When: You want to see data spread and outliers across groups.
+
+Example: Score distributions by gender
+
+python
+Copy
+Edit
+sns.boxplot(data=df, x="Gender", y="Score")
+✅ Shows median, quartiles, and outliers.
+
+🎻 10. Violin Plot
+Use When: You want to see both distribution and box plot in one.
+
+Example: Income distribution by education level
+
+python
+Copy
+Edit
+sns.violinplot(data=df, x="Education", y="Income")
+✅ Combines KDE + Box Plot — great for deeper distribution insights.
+
+🗺️ 11. Choropleth Map / Geo Scatter Plot
+Use When: You have location-based data (like countries or coordinates).
+
+Example: Visualizing CO₂ emissions by country
+
+python
+Copy
+Edit
+import plotly.express as px
+fig = px.choropleth(df, locations='Country', locationmode='country names', color='CO2')
+fig.show()
+✅ Best for world maps or lat/lon based data.
+
+Summary Table Again (Visual Style):
+Goal	Chart Type	Library	Use It For...
+Frequency of categories	Bar chart	Seaborn, Matplotlib	Count how often a category appears
+Compare values in subcategories	Grouped bar chart	Seaborn	Gender vs scores, region vs income
+See value distribution	Histogram, KDE	Seaborn	Spread of ages, GDPs, scores
+Show variable relationship	Scatter plot	Seaborn	Income vs life expectancy, GDP vs CO₂
+Show correlation matrix	Heatmap	Seaborn	Correlations between many columns
+Show parts of a whole	Pie chart	Matplotlib	% of each food type, % by stream
+Track changes over time	Line plot	Seaborn, Matplotlib	Stock prices, temperatures, COVID trends
+Show spread and outliers	Box plot	Seaborn	Income by city, scores by subject
+Show distribution + shape	Violin plot	Seaborn	Income distribution across education levels
+Show data on maps	Choropleth, Geo scatter	Plotly, GeoPandas	Values per country, city, region
+
